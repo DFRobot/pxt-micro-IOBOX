@@ -16,7 +16,7 @@
 
 //% weight=10 color=#DF6721 icon="\uf013" block="micro:IOBOX"
 namespace microIOBOX {
-    const PCA9685_ADDRESS = 0x40
+    const address = 0x10
 
     /**
      * The user selects the 4-way dc motor.
@@ -56,7 +56,7 @@ namespace microIOBOX {
         }
         buf[1] = direction;
         buf[2] = speed;
-        pins.i2cWriteBuffer(0x10, buf);
+        pins.i2cWriteBuffer(address, buf);
     }
 
     /**
@@ -75,7 +75,7 @@ namespace microIOBOX {
         }
         buf[1] = 0;
         buf[2] = 0;
-        pins.i2cWriteBuffer(0x10, buf);
+        pins.i2cWriteBuffer(address, buf);
     }
 
     /**
@@ -88,9 +88,9 @@ namespace microIOBOX {
         buf[0] = 0x00;
         buf[1] = 0;
         buf[2] = 0;
-        pins.i2cWriteBuffer(0x10, buf);
+        pins.i2cWriteBuffer(address, buf);
         buf[0] = 0x02;
-        pins.i2cWriteBuffer(0x10, buf);
+        pins.i2cWriteBuffer(address, buf);
     }
 }
 
