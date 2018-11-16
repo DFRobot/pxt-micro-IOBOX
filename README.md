@@ -11,7 +11,7 @@ micro:IOBOX drive expansion board.
 * [License](#license)
 
 ## URL
-project URL:  ```https://github.com/DFRobot/pxt-motor```
+project URL:  ```https://github.com/DFRobot/pxt-micro-IOBOX```
 
 ## Summary
 
@@ -26,5 +26,5 @@ MIT
 * for PXT/microbit
 (The metadata above is needed for package search.)
 ```package
-micro:IOBOX=github:DFRobot/pxt-micro-IOBOX
+microIOBOX=github:DFRobot/pxt-micro-IOBOX
 ```
