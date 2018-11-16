@@ -1,6 +1,6 @@
 {
     "name": "micro:IOBOX",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "This is dc motor, stepper motor, steering gear library.",
     "license": "MIT",
     "dependencies": {
