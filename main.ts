@@ -1,20 +1,20 @@
 /*！
  * @file pxt-micro-IOBOX/main.ts
  * @brief DFRobot's microbit motor drive makecode library.
- * @n [Get the module here](http://www.dfrobot.com.cn/goods-1577.html)
+ * @n [Get the module here](http://www.dfrobot.com.cn/index.php)
  * @n This is the microbit special motor drive library, which realizes control 
  *    of the eight-channel steering gear, two-step motor and four-way dc motor.
  *
  * @copyright	[DFRobot](http://www.dfrobot.com), 2016
  * @copyright	MIT Lesser General Public License
  *
- * @author [email](1035868977@qq.com)
- * @version  V1.0
- * @date  2018-03-20
+ * @author [email](xin.li@dfrobot.com)
+ * @version  V0.1
+ * @date  2018-11-16
  */
 
 
-//% weight=10 color=#DF6721 icon="\uf013" block="DF-Driver"
+//% weight=10 color=#DF6721 icon="\uf013" block="micro:IOBOX"
 namespace microIOBOX {
     const PCA9685_ADDRESS = 0x40
 
@@ -38,24 +38,24 @@ namespace microIOBOX {
 
     /**
 	 * Execute a motor
-     * M1~M4.
+     * M1~M2.
      * speed(0~255).
     */
     //% weight=90
-    //% blockId=motor_MotorRun block="Motor|%index|dir|%Dir|speed|%speed"
+    //% blockId=motor_motorRun block="Motor|%index|dir|%Dir|speed|%speed"
     //% speed.min=0 speed.max=255
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
-    export function motorRun(index: Motors, direction:Dir, speed: number): void {
+    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=1
+    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=1
+    export function motorRun(index: Motors, direction: Dir, speed: number): void {
         let buf = pins.createBuffer(3);
-        if (index==0){
-            buf[0]=0x00;
+        if (index == 0) {
+            buf[0] = 0x00;
         }
-        if (index==1){
-            buf[0]=0x02;
+        if (index == 1) {
+            buf[0] = 0x02;
         }
-        buf[1]=direction;
-        buf[2]=speed;
+        buf[1] = direction;
+        buf[2] = speed;
         pins.i2cWriteBuffer(0x10, buf);
     }
 
@@ -64,17 +64,17 @@ namespace microIOBOX {
     */
     //% weight=20
     //% blockId=motor_motorStop block="Motor stop|%index"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2 
+    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=1
     export function motorStop(index: Motors) {
         let buf = pins.createBuffer(3);
-        if(index==0){
-            buf[0]=0x00;
+        if (index == 0) {
+            buf[0] = 0x00;
         }
-        if(index==1){
-            buf[0]=0x02;
+        if (index == 1) {
+            buf[0] = 0x02;
         }
-        buf[1]=0;
-        buf[2]=0;
+        buf[1] = 0;
+        buf[2] = 0;
         pins.i2cWriteBuffer(0x10, buf);
     }
 
@@ -85,11 +85,11 @@ namespace microIOBOX {
     //% blockId=motor_motorStopAll block="Motor Stop All"
     export function motorStopAll(): void {
         let buf = pins.createBuffer(3);
-        buf[0]=0x00;
-        buf[1]=0;
-        buf[2]=0;
+        buf[0] = 0x00;
+        buf[1] = 0;
+        buf[2] = 0;
         pins.i2cWriteBuffer(0x10, buf);
-        buf[0]=0x02;
+        buf[0] = 0x02;
         pins.i2cWriteBuffer(0x10, buf);
     }
 }
