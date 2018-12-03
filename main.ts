@@ -31,9 +31,9 @@ namespace microIOBOX {
      */
     export enum Dir {
         //% blockId="CW" block="CW"
-        CW = 0x01,
+        CW = 0x00,
         //% blockId="CCW" block="CCW"
-        CCW = 0x00
+        CCW = 0x01
     }
 
     /**
