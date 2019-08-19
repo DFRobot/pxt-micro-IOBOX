@@ -23,7 +23,9 @@ namespace microIOBOX {
      */
     export enum Motors {
         M1 = 0x00,
-        M2 = 0x01
+        M2 = 0x01,
+        M3 = 0x02,
+        M4 = 0x03
     }
 
     /**
@@ -54,6 +56,12 @@ namespace microIOBOX {
         if (index == 1) {
             buf[0] = 0x02;
         }
+        if (index == 2) {
+            buf[0] = 0x04;
+        }
+        if (index == 3) {
+            buf[0] = 0x06;
+        }
         buf[1] = direction;
         buf[2] = speed;
         pins.i2cWriteBuffer(address, buf);
@@ -73,6 +81,12 @@ namespace microIOBOX {
         if (index == 1) {
             buf[0] = 0x02;
         }
+        if (index == 2) {
+            buf[0] = 0x04;
+        }
+        if (index == 3) {
+            buf[0] = 0x06;
+        }
         buf[1] = 0;
         buf[2] = 0;
         pins.i2cWriteBuffer(address, buf);
@@ -90,6 +104,10 @@ namespace microIOBOX {
         buf[2] = 0;
         pins.i2cWriteBuffer(address, buf);
         buf[0] = 0x02;
+        pins.i2cWriteBuffer(address, buf);
+        buf[0] = 0x04;
+        pins.i2cWriteBuffer(address, buf);
+        buf[0] = 0x06;
         pins.i2cWriteBuffer(address, buf);
     }
 }
