@@ -38,6 +38,11 @@ namespace microIOBOX {
         CCW = 0x01
     }
 
+    //% advanced=true shim=i2c::init
+    function init(): void {
+        return;
+    }
+
     /**
 	 * Execute a motor
      * M1~M2.
@@ -49,6 +54,7 @@ namespace microIOBOX {
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=1
     //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=1
     export function motorRun(index: Motors, direction: Dir, speed: number): void {
+        init();
         let buf = pins.createBuffer(3);
         if (index == 0) {
             buf[0] = 0x00;
